@@ -32,7 +32,7 @@ namespace HRPlatformApi.Controllers
         [HttpGet]//api/skills
         public async  Task<ActionResult<List<SkillDTO>>> Get() {
             logger.LogInformation("Getting all skills");
-            //vratice listu zanrova
+            //vratice listu skillsa
 
             var skills= await context.Skills.ToListAsync();
 
@@ -46,7 +46,6 @@ namespace HRPlatformApi.Controllers
 
 
 
-        //PAZITI NA VELIKO SLOVO MOZDA ZEZA
         [HttpGet("{Id:int}")] //api/skill/
         public async  Task<ActionResult<SkillDTO>> Get(int Id) {
             
