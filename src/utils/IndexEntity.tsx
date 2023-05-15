@@ -7,15 +7,15 @@ import GenericList from "./Genericlist";
 export default function IndexEntity<T>(props: indexEntityProps<T>) {
   const [entities, setEntities] = useState<T[]>();
 
-  useEffect(() => {
-    lodaData();
-  }, []);
-
   function lodaData() {
     axios.get(props.url).then((response: AxiosResponse<T[]>) => {
       setEntities(response.data);
     });
   }
+
+  useEffect(() => {
+    lodaData();
+  }); // eslint-disable-next-line
 
   async function deleteEntity(id: number) {
     try {
@@ -50,22 +50,26 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
       <h2> {props.title}</h2>
       <GenericList list={entities}>
         <table className="table table-striped">
-            {props.children(entities!, buttons)}
+          {props.children(entities!, buttons)}
         </table>
       </GenericList>
-      <Link className="btn btn-primary" to={props.createURL}> Create {props.entityName}</Link>
+      <Link className="btn btn-primary" to={props.createURL}>
+        {" "}
+        Create {props.entityName}
+      </Link>
     </>
   );
 }
 
 interface indexEntityProps<T> {
   url: string;
-  title:string;
-  createURL:string;
-  entityName:string;
+  title: string;
+  createURL: string;
+  entityName: string;
   //Ovo vraca react element
-  children(entities:T[],
-    
-    buttons:(editUrl:string, id:number)=>ReactElement):ReactElement
+  children(
+    entities: T[],
 
+    buttons: (editUrl: string, id: number) => ReactElement
+  ): ReactElement;
 }

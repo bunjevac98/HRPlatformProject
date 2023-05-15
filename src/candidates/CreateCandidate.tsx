@@ -14,7 +14,7 @@ export default function CreateCandidate() {
   const [nonSelectedSkills, setNonSelectedSkills] = useState<skillDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [error, setErrors] = useState<string[]>([]);
+  const [, setErrors] = useState<string[]>([]);
 
   useEffect(() => {
     axios.get(`${urlCandidates}/postget`)

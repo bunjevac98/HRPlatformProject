@@ -12,22 +12,14 @@ export default function IndexSkills() {
         entityName="Skill"
       >
         {(skills, buttons) => (
-          <>
-            <thead>
-              <th></th>
-              <th> Name</th>
-            </thead>
-            <tbody>
-              {skills?.map((skill) => (
-                <tr key={skill.id}>
-                  <td>
-                        {buttons(`edit/${skill.id}`,skill.id)}
-                  </td>
+          <div>
+            {skills?.map((skill) => (
+              <figure key={skill.id}>
+                  <td>{buttons(`edit/${skill.id}`, skill.id)}</td>
                   <td>{skill.skillName}</td>
-                </tr>
-              ))}
-            </tbody>
-          </>
+              </figure>
+            ))}
+          </div>
         )}
       </IndexEntity>
     </>

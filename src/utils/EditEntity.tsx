@@ -3,13 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 
 import DisplayErrors from "./DisplayErrors";
-import SkillForm from "../Skills/SkillForm";
 import Loading from "./Loading";
 
 export default function EditEntity<TCreation, TRead>(
   props: editEntityProps<TCreation, TRead>
 ) {
-  const { id }: any = useParams();
+  const { id } : any = useParams();
   //TCreation nam omogucava da koristimo razlicite klase
   const [entity, setEntity] = useState<TCreation>();
   const [errors, setErrors] = useState<string[]>([]);
@@ -48,7 +47,7 @@ interface editEntityProps<TCreation, TRead> {
   url: string;
   transform(entity: TRead): TCreation;
   entityNmae: string;
-  indexURL:string;
+  indexURL: string;
   children(entity: TCreation, edit: (entity: TCreation) => void): ReactElement;
 }
 
